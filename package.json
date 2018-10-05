@@ -1,0 +1,31 @@
+{
+  "name": "spartan_hasher",
+  "version": "1.0.0",
+  "description": "Hashes the results of an http request",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/darkmsph1t/spartan_hasher.git"
+  },
+  "keywords": [
+    "sha",
+    "hash",
+    "https"
+  ],
+  "author": "darkmsph1t",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/darkmsph1t/spartan_hasher/issues"
+  },
+  "homepage": "https://github.com/darkmsph1t/spartan_hasher#readme",
+  "dependencies": {
+    "jshashes": "^1.0.7"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0"
+  }
+}
