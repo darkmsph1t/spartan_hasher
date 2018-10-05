@@ -67,4 +67,4 @@ csp.directives object looks like this:
 ```
 `self` declarations are ignored. 
 
-The hasher function specfically looks for sites with .css, .js, .scss types
+The hasher function specfically looks for .css, .js, .scss file types
