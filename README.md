@@ -5,7 +5,7 @@
 spartan_hahser hashes the results of an http request. Primarily for use in generating hashes for scripts & styles in content security policies.
 
 ## Installation
-npm install --save-dev spartan_hasher
+`npm install --save-dev spartan_hasher`
 
 ## Use
 ```
