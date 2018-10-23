@@ -1,28 +1,27 @@
 const assert = require('assert');
 const nock = require('nock');
-const httpHasher = require('index.js');
+const Hashes = require('jshashes');
+//const httpHasher = require('./index');
 
-const hasher = require('hasher');
+const hasher = require('./hasher');
 
 describe('hasher', () => {
-    it('should generate a sha256 of the file contents', () => {
-        const test_url = 'https://stuff.com/jkdlsj.js';
+    it('should generate a sha256 of the file contents', async () => {
+        const test_url = 'https://stuff.com';
         const test_content = 'asfa';
-        nock(test_url).get('/').reply(200, test_content);
+        nock(test_url).get('/jkdlsj.js').reply(200, test_content);
         const expected_hash = new Hashes.SHA256().b64(test_content);
-        hasher(test_url).then((res) => {
-            assert.equal(expected_hash, res);
-        });
+        const res = await hasher(test_url + '/jkdlsj.js');
+        assert.equal(expected_hash, res);
     });
 
-    it('should generate a sha512 of the file contents', () => {
-        const test_url = 'https://stuff.com/jkdlsj.js';
+    it('should generate a sha512 of the file contents', async () => {
+        const test_url = 'https://stuff.com';
         const test_content = 'asfa';
-        nock(test_url).get('/').reply(200, test_content);
+        nock(test_url).get('/jkdlsj.js').reply(200, test_content);
         const expected_hash = new Hashes.SHA512().b64(test_content);
-        hasher(test_url).then((res) => {
-            assert.equal(expected_hash, res);
-        });
+        const res = await hasher(test_url + '/jkdlsj.js', '512');
+        assert.equal(expected_hash, res);
     });
 
     it('should match hash results in chrome', async () => {
@@ -40,7 +39,6 @@ describe('hasher', () => {
 
 describe('hash directives', () => {
     it('should generate sha256 of all valid urls', () => {
-        httpHasher()
     });
 
     it('should generate sha512 of all valid urls', () => {
