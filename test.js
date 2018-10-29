@@ -189,54 +189,54 @@ describe('hash directives', function () {
         const expectedDirectives = {
             'directives': {
                 'default-src': [
-                    'self', new Hashes.SHA256().b64(test_content)
+                    'self', new Hashes.SHA512().b64(test_content)
                 ],
                 'media-src': [
-                    'self', new Hashes.SHA256().b64(test_content)
+                    'self', new Hashes.SHA512().b64(test_content)
                 ],
                 'base-uri': [
-                    'self', new Hashes.SHA256().b64(test_content)
+                    'self', new Hashes.SHA512().b64(test_content)
                 ],
                 'img-src': [
-                    'self', new Hashes.SHA256().b64(test_content)
+                    'self', new Hashes.SHA512().b64(test_content)
                 ],
                 'font-src': [
-                    'self', new Hashes.SHA256().b64(test_content)
+                    'self', new Hashes.SHA512().b64(test_content)
                 ],
                 'connect-src': [
-                    'self', new Hashes.SHA256().b64(test_content)
+                    'self', new Hashes.SHA512().b64(test_content)
                 ],
                 'object-src': [
-                    'self', new Hashes.SHA256().b64(test_content)
+                    'self', new Hashes.SHA512().b64(test_content)
                 ],
                 'plugin-types': [
-                    new Hashes.SHA256().b64(test_content)
+                    new Hashes.SHA512().b64(test_content)
                 ],
                 'child-src': [
-                    'self', new Hashes.SHA256().b64(test_content)
+                    'self', new Hashes.SHA512().b64(test_content)
                 ],
                 'frame-src': [
-                    'self', new Hashes.SHA256().b64(test_content)
+                    'self', new Hashes.SHA512().b64(test_content)
                 ],
                 'frame-ancestors': [
-                    new Hashes.SHA256().b64(test_content)
+                    new Hashes.SHA512().b64(test_content)
                 ],
                 'manifest-src': [
-                    'self', new Hashes.SHA256().b64(test_content)
+                    'self', new Hashes.SHA512().b64(test_content)
                 ],
                 'worker-src': [
-                    new Hashes.SHA256().b64(test_content)
+                    new Hashes.SHA512().b64(test_content)
                 ],
                 'script-src': [
-                    'self', new Hashes.SHA256().b64(test_content)
+                    'self', new Hashes.SHA512().b64(test_content)
                 ],
                 'style-src': [
-                    'self', new Hashes.SHA256().b64(test_content)
+                    'self', new Hashes.SHA512().b64(test_content)
                 ]
             }
         };
 
-        const result = await httpHasher(testDirectives);
+        const result = await httpHasher(testDirectives, '512');
         assert.deepEqual(result.directives, expectedDirectives.directives);
     });
 
