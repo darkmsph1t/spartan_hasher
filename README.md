@@ -11,7 +11,14 @@ spartan_hahser hashes the results of an http request. Primarily for use in gener
 ```
 var hasher = require('spartan_hasher')
 
-var hashedSites = hasher(csp.directives) //Returns csp.directives object with 'sha256-x' hashes in place of the sites
+var hashedSites = await hasher(csp.directives,hashType) //Returns csp.directives object with 'sha256-x' or 'sha512-x' hashes in place of the sites
+
+var hashedSites;
+
+hasher(csp.directives,hashType).then(hashedResult =>{
+  hashedSites = hashedResult;
+});
+
 ```
 ### csp.directives
 csp.directives object looks like this:
@@ -21,7 +28,7 @@ csp.directives object looks like this:
             "self",
           ],
           "media-src": [
-            "self"
+            "none"
           ],
           "base-uri": [
             "self"
@@ -39,10 +46,10 @@ csp.directives object looks like this:
             "self"
           ],
           "plugin-types": [
-            "not.set.if.obj-src.is.not.set"
+            "https://www.myfakesite.com/myfakescript.js"
           ],
           "child-src": [
-            "self"
+            "none"
           ],
           "frame-src": [
             "self"
@@ -57,14 +64,20 @@ csp.directives object looks like this:
             "none"
           ],
           "script-src": [
-            "self", "https://www.myfakescript.js"
+            "self", "https://www.myfakesite.com/myfakescript.js"
           ],
           "style-src": [
-            "self", "https://myfakestyle.css"
+            "self", "https://myfakesite.css/myfakescript.css"
           ]
         }
       }
 ```
-`self` declarations are ignored. 
+`self` and `none` declarations are ignored. 
+
+## hashType
+hashType 
+```
+hash type can be either 256 or 512 to signify the if a sha256 hash should be return or a sha512 should be returned.
+```
 
 The hasher function specfically looks for .css, .js, .scss file types
